@@ -22,3 +22,28 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+*.egg-info/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# FastAPI / Alembic
+alembic/versions/__pycache__/
+
+# Environment variables
+.env
+.env.local
+
+# MySQL data files
+*.sql
+*.dump

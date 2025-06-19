@@ -21,7 +21,7 @@
     return (
         <div className="sidebar-admin">
         <div className="sidebar-admin-header">
-            <h1>Inventory</h1>
+            <h1>Inventaris Sekolah</h1>
         </div>
         <div className="sidebar-admin-menu">
             <p className="sidebar-admin-label">MENU</p>
