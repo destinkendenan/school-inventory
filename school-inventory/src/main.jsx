@@ -2,17 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-import SidebarAdmin from './components/SidebarAdmin.jsx'
-import SidebarUser from './components/SidebarUser.jsx'
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      {/* <SidebarAdmin /> */}
-      <SidebarUser/>
-    </BrowserRouter>
-  </StrictMode>,
-)
 
 
 // INI YANG KU KOMEN, KU PAKE COBA TAMPILANNYA BETUL MI 
