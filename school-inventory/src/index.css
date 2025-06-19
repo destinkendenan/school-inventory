@@ -69,3 +69,1140 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+/* Section Rafly */
+/* Dashboard Admin */
+/* Reset dan Default Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f6f8fb;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Main Background */
+.dashboard-admin-main-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: #f6f8fb;
+  display: flex;
+  justify-content: center;
+}
+
+/* Container */
+.dashboard-admin-container {
+  width: 100%;
+  max-width: none;
+  background: white;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Header Styles */
+.dashboard-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dashboard-admin-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dashboard-admin-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a237e;
+}
+
+.dashboard-admin-subtitle {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Avatar */
+.dashboard-admin-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.dashboard-admin-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Cards Styles */
+.dashboard-admin-cards-wrapper {
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.dashboard-admin-cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-admin-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dashboard-admin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard-admin-card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.dashboard-admin-card-content {
+  flex: 1;
+}
+
+.dashboard-admin-card-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.dashboard-admin-card-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a237e;
+}
+
+/* Sections */
+.dashboard-admin-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-admin-section {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-admin-section-title {
+  margin-bottom: 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.dashboard-admin-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.dashboard-admin-list li {
+  margin-bottom: 0.75rem;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .dashboard-admin-container {
+    padding: 1rem;
+  }
+
+  .dashboard-admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .dashboard-admin-container {
+    padding: 1rem;
+  }
+}
+
+/* Tambahan untuk section aktivitas, barang baru, user baru */
+.dashboard-section-header {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background: #fff;
+  border-radius: 8px 8px 0 0;
+  padding: 12px 16px 8px 16px;
+  margin-bottom: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.dashboard-section-icon {
+  margin-right: 8px;
+  font-size: 1.3rem;
+  color: #222;
+}
+
+.dashboard-section-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 16px 8px 16px;
+}
+
+.dashboard-section-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 1rem;
+}
+
+.dashboard-section-list li:last-child {
+  border-bottom: none;
+}
+
+.dashboard-section-item-name {
+  color: #222;
+}
+
+.dashboard-section-item-time {
+  color: #888;
+  font-size: 0.98rem;
+}
+/* End Dashboard Admin */
+
+/* Section Rafly */
+/* tampilan Data barang admin */
+.data-barang-admin-wrapper {
+  background: #f6f8fb;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.data-barang-admin-container-full {
+  background: #fff;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem 0;
+}
+
+.data-barang-admin-container,
+.data-barang-admin-container-full {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+.data-barang-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 12px;
+}
+
+.data-barang-admin-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.data-barang-admin-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #e3edfa;
+  box-shadow: 0 2px 8px rgba(26, 35, 126, 0.07);
+}
+
+.data-barang-admin-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.data-barang-admin-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(26, 35, 126, 0.08);
+  padding: 28px 18px 22px 18px;
+  margin-top: 8px;
+  width: 100%;
+  transition: box-shadow 0.2s;
+}
+
+.data-barang-admin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.data-barang-admin-card-title {
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: #1a237e;
+}
+
+.data-barang-admin-btn-tambah {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(25, 118, 210, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.2px;
+}
+.data-barang-admin-btn-tambah:hover {
+  background: #1251a3;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.13);
+}
+
+.data-barang-admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-barang-admin-table {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(26, 35, 126, 0.04);
+}
+
+.data-barang-admin-table th {
+  padding: 12px 8px;
+  border: 1px solid #e0e0e0;
+  font-weight: 700;
+  font-size: 1rem;
+  background: #d0e3fa;
+  color: #1a237e;
+  text-align: center;
+}
+
+.data-barang-admin-table td {
+  padding: 10px 8px;
+  border: 1px solid #e0e0e0;
+  background: #e3edfa;
+  transition: background 0.2s;
+  color: #446ed0;
+  font-weight: 600;
+}
+
+.data-barang-admin-table td.text-center {
+  text-align: center;
+}
+
+.data-barang-admin-table tbody tr:hover td {
+  background: #c7daf7;
+}
+
+.data-barang-admin-btn-aksi {
+  border: 1.5px solid #1976d2;
+  border-radius: 7px;
+  background: #fff;
+  padding: 7px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1976d2;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  letter-spacing: 0.2px;
+}
+.data-barang-admin-btn-aksi:hover,
+.data-barang-admin-btn-aksi:focus {
+  background: #1976d2;
+  color: #fff;
+  border: 1.5px solid #1251a3;
+}
+
+@media (max-width: 900px) {
+  .data-barang-admin-card {
+    padding: 18px 6px 12px 6px;
+  }
+  .data-barang-admin-header {
+    padding: 0 4px;
+  }
+}
+@media (max-width: 600px) {
+  .data-barang-admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .data-barang-admin-title {
+    font-size: 1.1rem;
+  }
+  .data-barang-admin-card {
+    padding: 10px 2px 8px 2px;
+  }
+  .data-barang-admin-table th,
+  .data-barang-admin-table td {
+    padding: 7px 4px;
+    font-size: 0.95rem;
+  }
+}
+/* end tampilan kode data barang admin */
+
+/* Data Barang Admin: Judul biru */
+.data-barang-admin-title-blue {
+  color: #1a237e;
+}
+
+/* Data Barang Admin: Container full width */
+.data-barang-admin-container-full {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}
+
+/* Data Barang Admin: Tabel biru pastel */
+.data-barang-admin-table-blue th,
+.data-barang-admin-table-blue td {
+  background: #cce4ff;
+}
+
+.data-barang-admin-table th,
+.data-barang-admin-table-blue th {
+  background: #1a237e;
+  color: #fff;
+}
+
+/* Data Barang Admin: Tombol aksi kentara */
+.data-barang-admin-btn-aksi-strong {
+  background: #1976d2;
+  color: #fff;
+  border: 1px solid #1976d2;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s;
+}
+
+.data-barang-admin-btn-aksi-strong:hover {
+  background: #1251a3;
+  color: #fff;
+  border: 1px solid #1251a3;
+}
+
+/* Untuk kolom Nama Barang saja */
+.data-barang-admin-table td:nth-child(2) {
+  color: #446ed0; /* biru tua */
+  font-weight: 600; /* opsional, biar lebih tebal */
+}
+
+/* Pagination Data Barang Admin */
+.data-barang-admin-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+.data-barang-admin-pagination-btn {
+  padding: 7px 16px;
+  border-radius: 7px;
+  border: 1.5px solid #1976d2;
+  background: #fff;
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  letter-spacing: 0.2px;
+}
+.data-barang-admin-pagination-btn.active,
+.data-barang-admin-pagination-btn:focus {
+  background: #1976d2;
+  color: #fff;
+  border: 1.5px solid #1251a3;
+}
+.data-barang-admin-pagination-btn:disabled {
+  background: #e3edfa;
+  color: #888;
+  border: 1.5px solid #b3d8ff;
+  cursor: not-allowed;
+}
+
+/* tampilan kategori admin */
+.kategori-admin-wrapper {
+  background: #f6f8fb;
+  min-height: 100vh;
+  width: 100vw;
+}
+.kategori-admin-container-full {
+  background: #fff;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem 0;
+}
+.kategori-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 12px;
+}
+.kategori-admin-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.kategori-admin-title-blue {
+  color: #1a237e;
+}
+.kategori-admin-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(26, 35, 126, 0.08);
+  padding: 28px 18px 22px 18px;
+  margin-top: 8px;
+  width: 100%;
+  transition: box-shadow 0.2s;
+}
+.kategori-admin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.kategori-admin-card-title {
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: #1a237e;
+}
+.kategori-admin-btn-tambah {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(25, 118, 210, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.2px;
+}
+.kategori-admin-btn-tambah:hover {
+  background: #1251a3;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.13);
+}
+.kategori-admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+.kategori-admin-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(26, 35, 126, 0.04);
+}
+.kategori-admin-table th {
+  padding: 12px 8px;
+  border: 1px solid #e0e0e0;
+  font-weight: 700;
+  font-size: 1rem;
+  background: #1a237e;
+  color: #fff;
+  text-align: center;
+}
+.kategori-admin-table td {
+  padding: 10px 8px;
+  border: 1px solid #e0e0e0;
+  background: #e3edfa;
+  transition: background 0.2s;
+  color: #446ed0;
+  font-weight: 600;
+}
+.kategori-admin-table td.text-center {
+  text-align: center;
+}
+.kategori-admin-table tbody tr:hover td {
+  background: #c7daf7;
+}
+.kategori-admin-btn-aksi {
+  border: 1.5px solid #1976d2;
+  border-radius: 7px;
+  background: #fff;
+  padding: 7px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1976d2;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  letter-spacing: 0.2px;
+}
+.kategori-admin-btn-aksi:hover,
+.kategori-admin-btn-aksi:focus {
+  background: #1976d2;
+  color: #fff;
+  border: 1.5px solid #1251a3;
+}
+.kategori-admin-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+.kategori-admin-pagination-btn {
+  padding: 7px 16px;
+  border-radius: 7px;
+  border: 1.5px solid #1976d2;
+  background: #fff;
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  letter-spacing: 0.2px;
+}
+.kategori-admin-pagination-btn.active,
+.kategori-admin-pagination-btn:focus {
+  background: #1976d2;
+  color: #fff;
+  border: 1.5px solid #1251a3;
+}
+.kategori-admin-pagination-btn:disabled {
+  background: #e3edfa;
+  color: #888;
+  border: 1.5px solid #b3d8ff;
+  cursor: not-allowed;
+}
+/* end tampilan kode kategori admin */
+
+/* tampilan Peminjaman admin */
+.peminjaman-admin-wrapper {
+  background: #f6f8fb;
+  min-height: 100vh;
+  width: 100vw;
+}
+.peminjaman-admin-container-full {
+  background: #fff;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem 0;
+}
+.peminjaman-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 12px;
+}
+.peminjaman-admin-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.peminjaman-admin-title-blue {
+  color: #1a237e;
+}
+.peminjaman-admin-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(26, 35, 126, 0.08);
+  padding: 28px 18px 22px 18px;
+  margin-top: 8px;
+  width: 100%;
+  transition: box-shadow 0.2s;
+}
+.peminjaman-admin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.peminjaman-admin-card-title {
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: #1a237e;
+}
+.peminjaman-admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+.peminjaman-admin-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(26, 35, 126, 0.04);
+}
+.peminjaman-admin-table th {
+  padding: 12px 8px;
+  border: 1px solid #e0e0e0;
+  font-weight: 700;
+  font-size: 1rem;
+  background: #1a237e;
+  color: #fff;
+  text-align: center;
+}
+.peminjaman-admin-table td {
+  padding: 10px 8px;
+  border: 1px solid #e0e0e0;
+  background: #e3edfa;
+  transition: background 0.2s;
+  color: #446ed0;
+  font-weight: 600;
+}
+.peminjaman-admin-table td.text-center {
+  text-align: center;
+}
+.peminjaman-admin-table tbody tr:hover td {
+  background: #c7daf7;
+}
+.peminjaman-admin-btn-aksi {
+  border: none;
+  border-radius: 7px;
+  padding: 7px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 2px;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  letter-spacing: 0.2px;
+}
+.peminjaman-admin-btn-tolak {
+  background: #fff;
+  color: #1976d2;
+  border: 1.5px solid #1976d2;
+}
+.peminjaman-admin-btn-tolak:hover,
+.peminjaman-admin-btn-tolak:focus {
+  background: #e3edfa;
+  color: #1251a3;
+  border: 1.5px solid #1251a3;
+}
+.peminjaman-admin-btn-setujui {
+  background: #b9f6ca;
+  color: #009e22;
+  border: 1.5px solid #00c853;
+}
+.peminjaman-admin-btn-setujui:hover,
+.peminjaman-admin-btn-setujui:focus {
+  background: #69f0ae;
+  color: #fff;
+  border: 1.5px solid #00c853;
+}
+.peminjaman-admin-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+.peminjaman-admin-pagination-btn {
+  padding: 7px 16px;
+  border-radius: 7px;
+  border: 1.5px solid #1976d2;
+  background: #fff;
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  letter-spacing: 0.2px;
+}
+.peminjaman-admin-pagination-btn.active,
+.peminjaman-admin-pagination-btn:focus {
+  background: #1976d2;
+  color: #fff;
+  border: 1.5px solid #1251a3;
+}
+.peminjaman-admin-pagination-btn:disabled {
+  background: #e3edfa;
+  color: #888;
+  border: 1.5px solid #b3d8ff;
+  cursor: not-allowed;
+}
+/* end tampilan kode peminjaman admin */
+
+/* Filter Bulan & Tahun Peminjaman Admin */
+.peminjaman-admin-filter {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 0 12px;
+  align-items: center;
+}
+
+/* Filter dalam card header */
+.peminjaman-admin-card-header .peminjaman-admin-filter {
+  margin-bottom: 0;
+  padding: 0;
+  margin-left: auto; /* Mendorong filter ke kanan */
+}
+
+.peminjaman-admin-filter-label {
+  font-weight: 600;
+  color: #1a237e;
+  font-size: 1rem;
+  margin-right: 8px;
+}
+
+.peminjaman-admin-filter-select {
+  padding: 8px 12px;
+  border: 1.5px solid #1976d2;
+  border-radius: 7px;
+  background: #fff;
+  color: #1a237e;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+  min-width: 120px;
+}
+
+.peminjaman-admin-filter-select:focus {
+  outline: none;
+  border: 1.5px solid #1251a3;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.peminjaman-admin-filter-select:hover {
+  border: 1.5px solid #1251a3;
+}
+
+.peminjaman-admin-filter-option {
+  background: #fff;
+  color: #1a237e;
+  font-weight: 600;
+}
+
+/* Responsive untuk filter */
+@media (max-width: 600px) {
+  .peminjaman-admin-filter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .peminjaman-admin-filter-select {
+    min-width: 100%;
+  }
+
+  /* Responsive untuk filter dalam card header */
+  .peminjaman-admin-card-header .peminjaman-admin-filter {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+/* Tampilan Data Tidak Ada */
+.peminjaman-admin-no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin: 20px 0;
+  border: 2px dashed #dee2e6;
+}
+
+.peminjaman-admin-no-data-icon {
+  font-size: 4rem;
+  color: #adb5bd;
+  margin-bottom: 20px;
+}
+
+.peminjaman-admin-no-data-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 10px;
+}
+
+.peminjaman-admin-no-data-message {
+  font-size: 1rem;
+  color: #6c757d;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* tampilan pengembalian admin */
+.pengembalian-admin-wrapper {
+  background: #f6f8fb;
+  min-height: 100vh;
+  width: 100vw;
+}
+.pengembalian-admin-container-full {
+  background: #fff;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem 0;
+}
+.pengembalian-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 12px;
+}
+.pengembalian-admin-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.pengembalian-admin-title-blue {
+  color: #1a237e;
+}
+.pengembalian-admin-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(26, 35, 126, 0.08);
+  padding: 28px 18px 22px 18px;
+  margin-top: 8px;
+  width: 100%;
+  transition: box-shadow 0.2s;
+}
+.pengembalian-admin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.pengembalian-admin-card-title {
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: #1a237e;
+}
+.pengembalian-admin-filter {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 0;
+  margin-left: auto;
+}
+.pengembalian-admin-filter-label {
+  font-weight: 600;
+  color: #1a237e;
+  font-size: 1rem;
+  margin-right: 8px;
+}
+.pengembalian-admin-filter-select {
+  padding: 8px 12px;
+  border: 1.5px solid #1976d2;
+  border-radius: 7px;
+  background: #fff;
+  color: #1a237e;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+  min-width: 120px;
+}
+.pengembalian-admin-filter-select:focus {
+  outline: none;
+  border: 1.5px solid #1251a3;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+.pengembalian-admin-filter-select:hover {
+  border: 1.5px solid #1251a3;
+}
+.pengembalian-admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+.pengembalian-admin-table {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(26, 35, 126, 0.04);
+}
+.pengembalian-admin-table th {
+  padding: 12px 8px;
+  border: 1px solid #e0e0e0;
+  font-weight: 700;
+  font-size: 1rem;
+  background: #1a237e;
+  color: #fff;
+  text-align: center;
+}
+.pengembalian-admin-table td {
+  padding: 10px 8px;
+  border: 1px solid #e0e0e0;
+  background: #e3edfa;
+  transition: background 0.2s;
+  color: #446ed0;
+  font-weight: 600;
+}
+.pengembalian-admin-table td.text-center {
+  text-align: center;
+}
+.pengembalian-admin-table tbody tr:hover td {
+  background: #c7daf7;
+}
+.pengembalian-admin-status {
+  padding: 5px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  display: inline-block;
+}
+.pengembalian-admin-status.success {
+  background: #d1f7d6;
+  color: #1b8a3a;
+  border: 1.5px solid #1b8a3a;
+}
+.pengembalian-admin-status.late {
+  background: #ffd6d6;
+  color: #d32f2f;
+  border: 1.5px solid #d32f2f;
+}
+.pengembalian-admin-btn-detail {
+  border: 1.5px solid #1976d2;
+  border-radius: 7px;
+  background: #fff;
+  padding: 7px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1976d2;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  letter-spacing: 0.2px;
+}
+.pengembalian-admin-btn-detail:hover,
+.pengembalian-admin-btn-detail:focus {
+  background: #1976d2;
+  color: #fff;
+  border: 1.5px solid #1251a3;
+}
+.pengembalian-admin-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+.pengembalian-admin-pagination-btn {
+  padding: 7px 16px;
+  border-radius: 7px;
+  border: 1.5px solid #1976d2;
+  background: #fff;
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  letter-spacing: 0.2px;
+}
+.pengembalian-admin-pagination-btn.active,
+.pengembalian-admin-pagination-btn:focus {
+  background: #1976d2;
+  color: #fff;
+  border: 1.5px solid #1251a3;
+}
+.pengembalian-admin-pagination-btn:disabled {
+  background: #e3edfa;
+  color: #888;
+  border: 1.5px solid #b3d8ff;
+  cursor: not-allowed;
+}
+/* Tampilan Data Tidak Ada */
+.pengembalian-admin-no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin: 20px 0;
+  border: 2px dashed #dee2e6;
+}
+.pengembalian-admin-no-data-icon {
+  font-size: 4rem;
+  color: #adb5bd;
+  margin-bottom: 20px;
+}
+.pengembalian-admin-no-data-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 10px;
+}
+.pengembalian-admin-no-data-message {
+  font-size: 1rem;
+  color: #6c757d;
+  max-width: 400px;
+  line-height: 1.5;
+}
+/* akhir tampilan pengembalian admin */
