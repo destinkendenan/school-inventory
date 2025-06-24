@@ -237,6 +237,9 @@ def delete_borrow(
             item.dipinjam -= borrow.jumlahPinjam
             db.add(item)
     
+    # Update borrow status
+    borrow.status = StatusEnum.dikembalikan
+    
     db.delete(borrow)
     db.commit()
     

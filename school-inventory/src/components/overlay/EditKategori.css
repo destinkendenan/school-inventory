@@ -1,0 +1,105 @@
+.kategori-edit-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.kategori-edit-modal {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.kategori-edit-content {
+  padding: 20px;
+}
+
+.kategori-edit-content h1 {
+  margin-top: 0;
+  color: #1a237e;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Ubah warna label menjadi lebih gelap dan berbeda */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #344054; /* Warna biru-abu gelap untuk kontras dengan container putih */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333333; /* Warna teks lebih gelap */
+  font-weight: 500; /* Sedikit lebih tebal */
+  background-color: #f9f9f9; /* Background input sedikit abu-abu */
+}
+
+/* Tambahkan styling saat input dalam keadaan focus */
+.form-group input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+  background-color: #ffffff; /* Background putih saat focus */
+}
+
+/* Styling khusus untuk placeholder */
+.form-group input::placeholder {
+  color: #aaaaaa;
+  font-weight: normal;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Ubah warna tombol batal agar tidak sama dengan container */
+.btn-cancel {
+  padding: 8px 16px;
+  background: #e0e0e0; /* Ubah dari #f5f5f5 ke warna abu yang lebih gelap */
+  color: #344054; /* Tambahkan warna teks yang lebih gelap */
+  border: 1px solid #cccccc; /* Ubah border menjadi lebih gelap */
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: #d0d0d0; /* Efek hover yang lebih gelap */
+}
+
+.btn-save {
+  padding: 8px 16px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-save:hover {
+  background: #1565c0;
+}

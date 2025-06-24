@@ -1,295 +1,330 @@
 import React, { useState, useEffect } from "react";
 import "../../index.css";
-
-const dataPeminjaman = [
-  // Data untuk bulan Juni
-  {
-    peminjam: "Rafly",
-    barang: "kursi",
-    kategori: "Alat",
-    jumlah: 5,
-    tanggal: "15 Juni 2025",
-  },
-  {
-    peminjam: "Rafly",
-    barang: "meja",
-    kategori: "Alat",
-    jumlah: 21,
-    tanggal: "15 Juni 2025",
-  },
-  {
-    peminjam: "Lifsa",
-    barang: "kabel HDMI",
-    kategori: "Alat",
-    jumlah: 22,
-    tanggal: "12 Juni 2025",
-  },
-  {
-    peminjam: "Kezia",
-    barang: "mikroskop",
-    kategori: "Alat",
-    jumlah: 11,
-    tanggal: "11 Juni 2025",
-  },
-  {
-    peminjam: "Destin",
-    barang: "kabel HDMI",
-    kategori: "Alat",
-    jumlah: 23,
-    tanggal: "10 Juni 2025",
-  },
-  {
-    peminjam: "Tia",
-    barang: "colokan mata 4",
-    kategori: "Alat",
-    jumlah: 100,
-    tanggal: "09 Juni 2025",
-  },
-  {
-    peminjam: "Sheryl",
-    barang: "papan tulis",
-    kategori: "Alat",
-    jumlah: 32,
-    tanggal: "05 Juni 2025",
-  },
-  {
-    peminjam: "Agus",
-    barang: "Proyektor",
-    kategori: "Alat",
-    jumlah: 98,
-    tanggal: "04 Juni 2025",
-  },
-  // Data untuk bulan Agustus
-  {
-    peminjam: "Budi",
-    barang: "Laptop",
-    kategori: "Elektronik",
-    jumlah: 3,
-    tanggal: "15 Agustus 2025",
-  },
-  {
-    peminjam: "Sari",
-    barang: "Speaker",
-    kategori: "Elektronik",
-    jumlah: 2,
-    tanggal: "12 Agustus 2025",
-  },
-  {
-    peminjam: "Doni",
-    barang: "Kamera",
-    kategori: "Elektronik",
-    jumlah: 1,
-    tanggal: "08 Agustus 2025",
-  },
-  {
-    peminjam: "Maya",
-    barang: "Microphone",
-    kategori: "Elektronik",
-    jumlah: 4,
-    tanggal: "03 Agustus 2025",
-  },
-  // Data untuk bulan Januari
-  {
-    peminjam: "Ahmad",
-    barang: "Komputer",
-    kategori: "Elektronik",
-    jumlah: 2,
-    tanggal: "20 Januari 2025",
-  },
-  {
-    peminjam: "Siti",
-    barang: "Printer",
-    kategori: "Elektronik",
-    jumlah: 1,
-    tanggal: "18 Januari 2025",
-  },
-  {
-    peminjam: "Rina",
-    barang: "Scanner",
-    kategori: "Elektronik",
-    jumlah: 1,
-    tanggal: "15 Januari 2025",
-  },
-  // Data untuk bulan Maret
-  {
-    peminjam: "Dedi",
-    barang: "Bola Basket",
-    kategori: "Olahraga",
-    jumlah: 5,
-    tanggal: "25 Maret 2025",
-  },
-  {
-    peminjam: "Nina",
-    barang: "Raket Badminton",
-    kategori: "Olahraga",
-    jumlah: 3,
-    tanggal: "22 Maret 2025",
-  },
-  {
-    peminjam: "Bambang",
-    barang: "Net Voli",
-    kategori: "Olahraga",
-    jumlah: 1,
-    tanggal: "20 Maret 2025",
-  },
-  // Data untuk bulan Mei
-  {
-    peminjam: "Eva",
-    barang: "Buku Matematika",
-    kategori: "Buku",
-    jumlah: 15,
-    tanggal: "30 Mei 2025",
-  },
-  {
-    peminjam: "Fajar",
-    barang: "Buku Fisika",
-    kategori: "Buku",
-    jumlah: 12,
-    tanggal: "28 Mei 2025",
-  },
-  {
-    peminjam: "Gita",
-    barang: "Buku Kimia",
-    kategori: "Buku",
-    jumlah: 10,
-    tanggal: "25 Mei 2025",
-  },
-  // Data untuk bulan Juli
-  {
-    peminjam: "Hadi",
-    barang: "Papan Tulis Digital",
-    kategori: "Elektronik",
-    jumlah: 2,
-    tanggal: "10 Juli 2025",
-  },
-  {
-    peminjam: "Indah",
-    barang: "Tablet",
-    kategori: "Elektronik",
-    jumlah: 4,
-    tanggal: "08 Juli 2025",
-  },
-  {
-    peminjam: "Joko",
-    barang: "Smart Board",
-    kategori: "Elektronik",
-    jumlah: 1,
-    tanggal: "05 Juli 2025",
-  },
-  // Data untuk bulan September
-  {
-    peminjam: "Kartika",
-    barang: "Alat Lab Biologi",
-    kategori: "Alat",
-    jumlah: 8,
-    tanggal: "20 September 2025",
-  },
-  {
-    peminjam: "Lukman",
-    barang: "Mikroskop Digital",
-    kategori: "Alat",
-    jumlah: 3,
-    tanggal: "18 September 2025",
-  },
-  {
-    peminjam: "Mira",
-    barang: "Termometer",
-    kategori: "Alat",
-    jumlah: 6,
-    tanggal: "15 September 2025",
-  },
-  // Data untuk bulan November
-  {
-    peminjam: "Nando",
-    barang: "Alat Musik",
-    kategori: "Seni",
-    jumlah: 5,
-    tanggal: "25 November 2025",
-  },
-  {
-    peminjam: "Oscar",
-    barang: "Gitar",
-    kategori: "Seni",
-    jumlah: 2,
-    tanggal: "22 November 2025",
-  },
-  {
-    peminjam: "Putri",
-    barang: "Piano",
-    kategori: "Seni",
-    jumlah: 1,
-    tanggal: "20 November 2025",
-  },
-  // Data untuk tahun 2024
-  {
-    peminjam: "Qori",
-    barang: "Laptop 2024",
-    kategori: "Elektronik",
-    jumlah: 2,
-    tanggal: "15 Juni 2024",
-  },
-  {
-    peminjam: "Rudi",
-    barang: "Proyektor 2024",
-    kategori: "Elektronik",
-    jumlah: 1,
-    tanggal: "10 Agustus 2024",
-  },
-  {
-    peminjam: "Sinta",
-    barang: "Buku 2024",
-    kategori: "Buku",
-    jumlah: 20,
-    tanggal: "05 September 2024",
-  },
-];
+import { getBorrows, updateBorrow, getUsers, returnBorrowedItem } from "../../services/apiService";
+import { API_ENDPOINTS } from "../../config/api";
+import ReturnConfirm from '../../components/overlay/ReturnConfirm';
 
 const Peminjaman = () => {
+  const [peminjaman, setPeminjaman] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedBulan, setSelectedBulan] = useState("06"); // Default Juni
-  const [selectedTahun, setSelectedTahun] = useState("semua"); // Default Semua Tahun
+  const [selectedBulan, setSelectedBulan] = useState(""); // Default semua bulan
+  const [selectedTahun, setSelectedTahun] = useState(""); // Default semua tahun
   const itemsPerPage = 10;
+  const [userCache, setUserCache] = useState({}); // Cache untuk menyimpan data user yang sudah diambil
+  const [isReturnConfirmOpen, setIsReturnConfirmOpen] = useState(false);
+  const [borrowToReturn, setBorrowToReturn] = useState(null);
 
-  // Filter data berdasarkan bulan dan tahun
-  const filteredData = dataPeminjaman.filter((item) => {
-    const itemBulan = item.tanggal.split(" ")[1]; // Ambil bulan dari tanggal
-    const itemTahun = item.tanggal.split(" ")[2]; // Ambil tahun dari tanggal
+  // Fungsi untuk mendapatkan user dari list users
+  const getUserById = (userId, usersList) => {
+    return usersList.find(user => user.id === userId) || null;
+  };
 
-    // Mapping nama bulan ke angka
-    const bulanMapping = {
-      Januari: "01",
-      Februari: "02",
-      Maret: "03",
-      April: "04",
-      Mei: "05",
-      Juni: "06",
-      Juli: "07",
-      Agustus: "08",
-      September: "09",
-      Oktober: "10",
-      November: "11",
-      Desember: "12",
+  // Fetch data peminjaman dari API
+  useEffect(() => {
+    const fetchBorrows = async () => {
+      try {
+        setLoading(true);
+        console.log("Fetching from endpoint:", API_ENDPOINTS.BORROWS.GET_ALL);
+        const data = await getBorrows();
+        console.log("Raw API response:", data);
+        
+        // Format data sesuai kebutuhan UI
+        const formattedData = [];
+
+        if (Array.isArray(data)) {
+          for (const item of data) {
+            console.log("Processing item:", item);
+            
+            try {
+              // Skip undefined/null items
+              if (!item) continue;
+              
+              // Create tanggalObj safely
+              let tanggalObj = new Date();
+              try {
+                if (item.tanggalPinjam) {
+                  tanggalObj = new Date(item.tanggalPinjam);
+                } else if (item.createdAt) {
+                  tanggalObj = new Date(item.createdAt);
+                }
+              } catch (e) {
+                console.warn("Error parsing date:", e);
+              }
+              
+              // Tambahan untuk tanggal kembali
+              let tanggalKembaliFormatted = "-";
+              if (item.tanggalKembali) {
+                try {
+                  const tanggalKembaliObj = new Date(item.tanggalKembali);
+                  const hari = tanggalKembaliObj.getDate();
+                  const bulan = [
+                    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+                  ][tanggalKembaliObj.getMonth()];
+                  const tahun = tanggalKembaliObj.getFullYear();
+                  tanggalKembaliFormatted = `${hari} ${bulan} ${tahun}`;
+                } catch (e) {
+                  console.warn("Error parsing return date:", e);
+                }
+              }
+              
+              const hari = tanggalObj.getDate();
+              const bulan = [
+                "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+              ][tanggalObj.getMonth()];
+              const tahun = tanggalObj.getFullYear();
+              const tanggalFormatted = `${hari} ${bulan} ${tahun}`;
+              
+              const bulanAngka = (tanggalObj.getMonth() + 1).toString().padStart(2, '0');
+              const tahunAngka = tahun.toString();
+              
+              // Get peminjam data - prioritas menggunakan data relasi
+              let peminjamName = "N/A";
+              
+              if (item.peminjam) {
+                // Jika relasi sudah terbentuk dengan baik
+                peminjamName = item.peminjam.nama || item.peminjam.username || item.peminjam.email;
+              } else if (item.peminjam_id) {
+                // Jika hanya ada peminjam_id, ambil dari cache atau fetch terpisah
+                const cachedUser = userCache[item.peminjam_id];
+                if (cachedUser) {
+                  peminjamName = cachedUser.nama || cachedUser.username || cachedUser.email;
+                } else {
+                  console.log(`User data not available for peminjam_id: ${item.peminjam_id}`);
+                  // Jika perlu, di sini bisa fetch data user berdasarkan peminjam_id
+                }
+              }
+              
+              // Extract barang and other properties safely
+              const barang = item.barang || {};
+              const kategori = barang.kategori || {};
+              
+              formattedData.push({
+                id: item.id || Math.random().toString(36).substr(2, 9),
+                peminjam: peminjamName,
+                peminjam_id: item.peminjam_id || (item.user ? item.user.id : null),
+                barang: barang.namaBarang || barang.nama || "N/A",
+                kategori: kategori.nama || "Lainnya",
+                jumlah: item.jumlahPinjam || 1,
+                tanggal: tanggalFormatted,
+                tanggalKembali: tanggalKembaliFormatted, // Tambahkan tanggal kembali
+                status: item.status || "menunggu",
+                catatan: item.catatan || "-",
+                bulanAngka,
+                tahunAngka,
+                rawData: item
+              });
+            } catch (err) {
+              console.error("Error formatting item:", err, item);
+            }
+          }
+        }
+
+        console.log("All borrows:", formattedData);
+        setPeminjaman(formattedData);
+        setError(null);
+      } catch (err) {
+        console.error("Error fetching borrows:", err);
+        setError("Gagal memuat data peminjaman: " + (err.message || "Unknown error"));
+      } finally {
+        setLoading(false);
+      }
     };
 
-    const itemBulanAngka = bulanMapping[itemBulan];
+    // Fungsi untuk mengambil data user
+    const fetchUserDetails = async (userId) => {
+      try {
+        const user = await getUsers(userId);
+        setUserCache(prev => ({
+          ...prev,
+          [userId]: user
+        }));
+        return user;
+      } catch (err) {
+        console.error(`Error fetching user ${userId}:`, err);
+        return null;
+      }
+    };
 
-    // Jika tahun "semua", hanya filter berdasarkan bulan
-    if (selectedTahun === "semua") {
-      return itemBulanAngka === selectedBulan;
+    // Cache untuk menyimpan data user yang sudah diambil
+    const userCache = {};
+    
+    fetchBorrows();
+  }, []);
+
+  // Dalam useEffect, fetch semua users sekali saja
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const users = await getUsers();
+        // Ubah array users menjadi object dengan id sebagai key
+        const usersById = {};
+        users.forEach(user => {
+          usersById[user.id] = user;
+        });
+        setUserCache(usersById);
+      } catch (err) {
+        console.error("Error fetching users:", err);
+      }
+    };
+    
+    fetchUsers();
+  }, []);
+
+  // Handler untuk aksi setujui/tolak
+  const handleAction = async (id, action) => {
+    try {
+      const status = action === 'approve' ? 'disetujui' : 'ditolak';
+      console.log(`Mengubah status peminjaman ID ${id} menjadi ${status}`);
+      
+      await updateBorrow(id, { status });
+      
+      // Update state secara lokal
+      setPeminjaman(prev => 
+        prev.map(item => 
+          item.id === id ? { ...item, status } : item
+        )
+      );
+      
+      alert(`Peminjaman berhasil ${status}`);
+    } catch (err) {
+      console.error(`Error ${action} borrow:`, err);
+      alert(`Gagal ${action === 'approve' ? 'menyetujui' : 'menolak'} peminjaman`);
     }
+  };
 
-    return itemBulanAngka === selectedBulan && itemTahun === selectedTahun;
+  // Fungsi untuk membuka overlay konfirmasi pengembalian
+  const handleReturnClick = (item) => {
+    setBorrowToReturn(item);
+    setIsReturnConfirmOpen(true);
+  };
+
+  // Ganti fungsi handleReturn dengan confirmReturn
+  const confirmReturn = async () => {
+    const id = borrowToReturn.id;
+    try {
+      // Dapatkan tanggal saat ini
+      const currentDate = new Date();
+      
+      // Kode untuk menentukan status tidak berubah
+      let isLate = false;
+      
+      if (borrowToReturn && borrowToReturn.rawData) {
+        // Jika ada tanggal jatuh tempo dalam data API, gunakan itu
+        if (borrowToReturn.rawData.tanggalJatuhTempo) {
+          const dueDate = new Date(borrowToReturn.rawData.tanggalJatuhTempo);
+          isLate = currentDate > dueDate;
+        } 
+        // Jika tidak, hitung berdasarkan tanggal pinjam + 7 hari
+        else if (borrowToReturn.rawData.tanggalPinjam || borrowToReturn.rawData.createdAt) {
+          const borrowDate = new Date(borrowToReturn.rawData.tanggalPinjam || borrowToReturn.rawData.createdAt);
+          const dueDate = new Date(borrowDate);
+          dueDate.setDate(dueDate.getDate() + 7); // Periode pinjam 7 hari
+          isLate = currentDate > dueDate;
+        }
+      }
+      
+      // PERBAIKAN: Gunakan format enum yang sesuai dengan backend
+      let status = isLate ? 'Terlambat' : 'Dikembalikan';
+      
+      // Format tanggal untuk tampilan
+      const tanggalKembaliFormatted = formatDate(currentDate);
+      
+      // Siapkan data yang akan dikirim
+      const returnData = { 
+        status: status,
+        tanggalKembali: currentDate.toISOString()
+      };
+      
+      console.log("Sending return data:", returnData);
+      
+      let apiSuccess = false;
+      try {
+        // Coba update ke API
+        await updateBorrow(id, returnData);
+        apiSuccess = true;
+      } catch (apiError) {
+        console.error("Error updating database:", apiError);
+        // API error, lanjutkan dengan UI update saja
+      }
+      
+      // Untuk tampilan UI tetap gunakan format lowercase
+      const displayStatus = isLate ? 'terlambat dikembalikan' : 'dikembalikan';
+      
+      // Update UI terlepas dari API berhasil atau tidak
+      setPeminjaman(prev => 
+        prev.map(item => 
+          item.id === id ? { 
+            ...item, 
+            status: displayStatus, // Gunakan format yang konsisten untuk UI
+            tanggalKembali: tanggalKembaliFormatted
+          } : item
+        )
+      );
+      
+      // Notifikasi hanya jika API gagal
+      if (!apiSuccess) {
+        alert(`Barang ditandai sebagai ${displayStatus} di aplikasi, tetapi tidak tersimpan ke database. Silakan coba lagi nanti.`);
+      }
+      
+      // Tutup overlay
+      setIsReturnConfirmOpen(false);
+    } catch (err) {
+      console.error("Error in return process:", err);
+      setIsReturnConfirmOpen(false);
+    }
+  };
+
+  // Fungsi helper untuk format tanggal
+  const formatDate = (date) => {
+    const hari = date.getDate();
+    const bulan = [
+      "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+      "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+    ][date.getMonth()];
+    const tahun = date.getFullYear();
+    return `${hari} ${bulan} ${tahun}`;
+  };
+
+  // Filter data berdasarkan bulan dan tahun
+  const filteredData = peminjaman.filter((item) => {
+    // Jika tidak ada filter yang dipilih, tampilkan semua data
+    if (!selectedBulan && !selectedTahun) return true;
+    
+    // Filter berdasarkan bulan saja
+    if (selectedBulan && !selectedTahun) {
+      return item.bulanAngka === selectedBulan;
+    }
+    
+    // Filter berdasarkan tahun saja
+    if (!selectedBulan && selectedTahun) {
+      return item.tahunAngka === selectedTahun;
+    }
+    
+    // Filter berdasarkan bulan dan tahun
+    return item.bulanAngka === selectedBulan && item.tahunAngka === selectedTahun;
   });
 
-  const indexOfLast = currentPage * itemsPerPage;
-  const indexOfFirst = indexOfLast - itemsPerPage;
-  const currentData = filteredData.slice(indexOfFirst, indexOfLast);
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  console.log("Data setelah filter:", filteredData);
 
   // Reset halaman ketika filter berubah
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedBulan, selectedTahun]);
+
+  // Pagination calculation
+  const indexOfLast = currentPage * itemsPerPage;
+  const indexOfFirst = indexOfLast - itemsPerPage;
+  const currentData = filteredData.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+  // Extract unique years for filter dropdown
+  const uniqueYears = [...new Set(peminjaman.map(item => item.tahunAngka))].sort();
+
+  console.log("Status rendering:", { loading, error, peminjaman: peminjaman.length, filteredData: filteredData.length });
 
   return (
     <div className="peminjaman-admin-wrapper">
@@ -320,6 +355,7 @@ const Peminjaman = () => {
                 onChange={(e) => setSelectedBulan(e.target.value)}
                 className="peminjaman-admin-filter-select"
               >
+                <option value="">Semua Bulan</option>
                 <option value="01">Januari</option>
                 <option value="02">Februari</option>
                 <option value="03">Maret</option>
@@ -338,15 +374,35 @@ const Peminjaman = () => {
                 onChange={(e) => setSelectedTahun(e.target.value)}
                 className="peminjaman-admin-filter-select"
               >
-                <option value="semua">Semua Tahun</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-                <option value="2026">2026</option>
+                <option value="">Semua Tahun</option>
+                {uniqueYears.map(year => (
+                  <option key={year} value={year}>{year}</option>
+                ))}
               </select>
             </div>
           </div>
           <div className="peminjaman-admin-table-wrapper">
-            {filteredData.length > 0 ? (
+            {loading ? (
+              <div className="peminjaman-admin-loading">
+                <p>Memuat data peminjaman...</p>
+              </div>
+            ) : error ? (
+              <div className="peminjaman-admin-error">
+                <p>{error}</p>
+              </div>
+            ) : filteredData.length === 0 ? (
+              <div className="peminjaman-admin-no-data">
+                <div className="peminjaman-admin-no-data-icon">
+                  ⚠️
+                </div>
+                <h3 className="peminjaman-admin-no-data-title">
+                  Data Tidak Ditemukan
+                </h3>
+                <p className="peminjaman-admin-no-data-message">
+                  Tidak ada data peminjaman untuk ditampilkan atau periode yang dipilih.
+                </p>
+              </div>
+            ) : (
               <>
                 <table className="peminjaman-admin-table peminjaman-admin-table-blue">
                   <thead>
@@ -357,12 +413,15 @@ const Peminjaman = () => {
                       <th>Kategori</th>
                       <th>Jumlah Barang</th>
                       <th>Tanggal Pengajuan</th>
+                      <th>Tanggal Kembali</th>
+                      <th>Catatan</th>
+                      <th>Status</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     {currentData.map((item, idx) => (
-                      <tr key={idx}>
+                      <tr key={item.id || idx}>
                         <td className="text-center">
                           {indexOfFirst + idx + 1}
                         </td>
@@ -371,72 +430,99 @@ const Peminjaman = () => {
                         <td>{item.kategori}</td>
                         <td className="text-center">{item.jumlah}</td>
                         <td className="text-center">{item.tanggal}</td>
+                        <td className="text-center">{item.tanggalKembali}</td>
+                        <td>{item.catatan}</td>
                         <td className="text-center">
-                          <button
-                            className="peminjaman-admin-btn-aksi peminjaman-admin-btn-tolak"
-                            title="Tolak"
-                          >
-                            <i className="fa-solid fa-xmark"></i>
-                          </button>
-                          <button
-                            className="peminjaman-admin-btn-aksi peminjaman-admin-btn-setujui"
-                            title="Setujui"
-                            style={{ marginLeft: "8px" }}
-                          >
-                            <i className="fa-solid fa-check"></i>
-                          </button>
+                          <span className={`status-badge status-${item.status}`}>
+                            {item.status || "menunggu"}
+                          </span>
+                        </td>
+                        <td className="text-center">
+                          {item.status === "dikembalikan" || item.status === "Dikembalikan" || item.status === "terlambat dikembalikan" ? (
+                            <span className="text-muted">Selesai</span>
+                          ) : (
+                            <div className="peminjaman-admin-actions">
+                              {/* Tombol Kembalikan selalu tersedia untuk item yang belum dikembalikan */}
+                              <button
+                                className="peminjaman-admin-btn-aksi peminjaman-admin-btn-return"
+                                title="Kembalikan"
+                                onClick={() => handleReturnClick(item)}
+                              >
+                                ↩️ Kembalikan
+                              </button>
+                              
+                              {/* Tombol setuju/tolak hanya untuk status "menunggu" */}
+                              {item.status === "menunggu" && (
+                                <div className="peminjaman-admin-action-group" style={{ marginTop: "8px" }}>
+                                  <button
+                                    className="peminjaman-admin-btn-aksi peminjaman-admin-btn-tolak"
+                                    title="Tolak"
+                                    onClick={() => handleAction(item.id, 'reject')}
+                                  >
+                                    ❌ Tolak
+                                  </button>
+                                  <button
+                                    className="peminjaman-admin-btn-aksi peminjaman-admin-btn-setujui"
+                                    title="Setujui"
+                                    style={{ marginLeft: "8px" }}
+                                    onClick={() => handleAction(item.id, 'approve')}
+                                  >
+                                    ✅ Setujui
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+                          )}
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
                 {/* Pagination */}
-                <div className="peminjaman-admin-pagination">
-                  <button
-                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                    disabled={currentPage === 1}
-                    className="peminjaman-admin-pagination-btn"
-                  >
-                    {"<"}
-                  </button>
-                  {[...Array(totalPages)].map((_, i) => (
+                {totalPages > 1 && (
+                  <div className="peminjaman-admin-pagination">
                     <button
-                      key={i}
-                      onClick={() => setCurrentPage(i + 1)}
-                      className={`peminjaman-admin-pagination-btn${
-                        currentPage === i + 1 ? " active" : ""
-                      }`}
+                      onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                      disabled={currentPage === 1}
+                      className="peminjaman-admin-pagination-btn"
                     >
-                      {i + 1}
+                      {"<"}
                     </button>
-                  ))}
-                  <button
-                    onClick={() =>
-                      setCurrentPage((p) => Math.min(p + 1, totalPages))
-                    }
-                    disabled={currentPage === totalPages}
-                    className="peminjaman-admin-pagination-btn"
-                  >
-                    {">"}
-                  </button>
-                </div>
+                    {[...Array(totalPages)].map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setCurrentPage(i + 1)}
+                        className={`peminjaman-admin-pagination-btn${
+                          currentPage === i + 1 ? " active" : ""
+                        }`}
+                      >
+                        {i + 1}
+                      </button>
+                    ))}
+                    <button
+                      onClick={() =>
+                        setCurrentPage((p) => Math.min(p + 1, totalPages))
+                      }
+                      disabled={currentPage === totalPages}
+                      className="peminjaman-admin-pagination-btn"
+                    >
+                      {">"}
+                    </button>
+                  </div>
+                )}
               </>
-            ) : (
-              <div className="peminjaman-admin-no-data">
-                <div className="peminjaman-admin-no-data-icon">
-                  <i className="fa-solid fa-inbox"></i>
-                </div>
-                <h3 className="peminjaman-admin-no-data-title">
-                  Data Tidak Ada
-                </h3>
-                <p className="peminjaman-admin-no-data-message">
-                  Tidak ada data peminjaman untuk periode yang dipilih.
-                </p>
-              </div>
             )}
           </div>
         </div>
       </div>
+
+      {/* Komponen konfirmasi pengembalian */}
+      <ReturnConfirm
+        isOpen={isReturnConfirmOpen}
+        item={borrowToReturn}
+        onClose={() => setIsReturnConfirmOpen(false)}
+        onConfirm={confirmReturn}
+      />
     </div>
   );
 };

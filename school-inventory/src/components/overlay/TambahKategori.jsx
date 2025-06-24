@@ -1,10 +1,10 @@
-    import React, { useState } from 'react';
-    import './TambahKategori.css';
+import React, { useState } from 'react';
+import './TambahKategori.css';
 
-    const TambahKategori = ({ isOpen, onClose, onSave }) => {
+const TambahKategori = ({ isOpen, onClose, onSave }) => {
     const [formData, setFormData] = useState({
         kategori: '',
-        jumlah: 0
+        deskripsi: '' // Hanya simpan kategori dan deskripsi
     });
     
     const handleChange = (e) => {
@@ -39,18 +39,21 @@
                     value={formData.kategori}
                     onChange={handleChange}
                     placeholder="Kategori"
+                    required
                     />
                 </div>
                 
+                {/* Hapus field jumlah barang */}
+                
                 <div className="tambah-kategori-form-group">
-                    <label htmlFor="jumlah">Jumlah Barang</label>
+                    <label htmlFor="deskripsi">Deskripsi</label>
                     <input
-                    type="number"
-                    id="jumlah"
-                    name="jumlah"
-                    value={formData.jumlah}
+                    type="text"
+                    id="deskripsi"
+                    name="deskripsi"
+                    value={formData.deskripsi}
                     onChange={handleChange}
-                    min="0"
+                    placeholder="Deskripsi"
                     />
                 </div>
                 </div>
@@ -68,6 +71,6 @@
         </div>
         </div>
     );
-    };
+};
 
-    export default TambahKategori;
+export default TambahKategori;

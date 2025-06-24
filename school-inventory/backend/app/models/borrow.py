@@ -28,4 +28,3 @@ class Borrow(Base):
     # Relationships
     peminjam = relationship("User")
     barang = relationship("Item", back_populates="peminjaman")
-    pengembalian = relationship("Return", back_populates="peminjaman", uselist=False)

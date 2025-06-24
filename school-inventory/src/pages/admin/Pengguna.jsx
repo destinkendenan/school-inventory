@@ -1,146 +1,153 @@
+import React, { useState, useEffect } from "react";
+import { getUsers } from "../../services/apiService";
+
 const Pengguna = () => {
-  return (
-    <div className="h-full">
-      <h1 className="text-2xl font-bold mb-6">Pengguna</h1>
-      
-      <div className="bg-white rounded-lg shadow-md mb-6">
-        <div className="p-4 border-b border-gray-200">
-          <h2 className="text-lg font-semibold">Daftar Pengguna</h2>
-        </div>
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
+  // Fetch users data from API
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        setLoading(true);
+        const data = await getUsers();
         
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  No
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Nama
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Jumlah Barang Dipinjam
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Jumlah Barang Dikembalikan
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">1</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">Kezia</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">6</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">5</div>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">2</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">Kezia</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">6</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">5</div>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">3</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">Kezia</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">6</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">5</div>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">4</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">Kezia</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">6</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">5</div>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">5</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">Kezia</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">6</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">5</div>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">6</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">Kezia</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">6</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">5</div>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">7</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">Kezia</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">6</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">5</div>
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">8</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">Kezia</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">6</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">5</div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        // Debug logs
+        console.log("Raw API data:", data);
+        
+        // Filter out admin users - handle different possible formats
+        const regularUsers = data.filter(user => {
+          // Debug log untuk setiap user
+          console.log("User:", user);
+          
+          // Check various ways role might be stored
+          const userRole = user.role || user.user_role || user.userRole || '';
+          const isAdmin = 
+            typeof userRole === 'string' && 
+            (userRole.toLowerCase() === "admin" || userRole.toLowerCase() === "administrator");
+          
+          console.log(`User ${user.username || user.name || user.id} - Role: ${userRole}, isAdmin: ${isAdmin}`);
+          
+          return !isAdmin;
+        });
+        
+        console.log("Filtered users (non-admin):", regularUsers);
+        setUsers(regularUsers);
+        
+        setError(null);
+      } catch (err) {
+        console.error("Error fetching users:", err);
+        setError("Gagal memuat data pengguna: " + (err.message || "Unknown error"));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  // Pagination calculation
+  const indexOfLast = currentPage * itemsPerPage;
+  const indexOfFirst = indexOfLast - itemsPerPage;
+  const currentUsers = users.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(users.length / itemsPerPage);
+
+  return (
+    <div className="pengguna-admin-wrapper">
+      <div className="pengguna-admin-container-full">
+        <div className="pengguna-admin-header">
+          <h2 className="pengguna-admin-title pengguna-admin-title-blue">
+            Data Pengguna
+          </h2>
+          <div className="dashboard-admin-avatar">
+            <img
+              src="https://randomuser.me/api/portraits/women/44.jpg"
+              alt="avatar"
+              className="dashboard-admin-avatar-img"
+            />
+          </div>
+        </div>
+        <div className="pengguna-admin-card">
+          <div className="pengguna-admin-card-header">
+            <span className="pengguna-admin-card-title">Daftar Pengguna</span>
+            <span className="pengguna-admin-card-count">
+              Total: {users.length} pengguna
+            </span>
+          </div>
+          <div className="pengguna-admin-table-wrapper">
+            <table className="pengguna-admin-table pengguna-admin-table-blue">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Pengguna</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                {loading ? (
+                  <tr>
+                    <td colSpan="3" className="text-center">
+                      Memuat data...
+                    </td>
+                  </tr>
+                ) : error ? (
+                  <tr>
+                    <td colSpan="3" className="text-center">
+                      {error}
+                    </td>
+                  </tr>
+                ) : users.length === 0 ? (
+                  <tr>
+                    <td colSpan="3" className="text-center">
+                      Tidak ada data pengguna
+                    </td>
+                  </tr>
+                ) : (
+                  currentUsers.map((user, idx) => (
+                    <tr key={user.id || idx}>
+                      <td className="text-center">{indexOfFirst + idx + 1}</td>
+                      <td>{user.username || user.name || "N/A"}</td>
+                      <td>{user.email || "N/A"}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+            
+            {/* Pagination */}
+            {!loading && !error && users.length > 0 && (
+              <div className="pengguna-admin-pagination">
+                <button
+                  onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                  disabled={currentPage === 1}
+                  className="pengguna-admin-pagination-btn"
+                >
+                  {"<"}
+                </button>
+                {[...Array(totalPages)].map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentPage(i + 1)}
+                    className={`pengguna-admin-pagination-btn${
+                      currentPage === i + 1 ? " active" : ""
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+                <button
+                  onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                  disabled={currentPage === totalPages}
+                  className="pengguna-admin-pagination-btn"
+                >
+                  {">"}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

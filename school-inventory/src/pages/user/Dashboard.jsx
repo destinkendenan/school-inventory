@@ -1,4 +1,102 @@
+import { getItems, createBorrow } from "../../services/apiService";
+import { useState, useEffect } from "react";
+
 const Dashboard = () => {
+  // State untuk form peminjaman
+  const [barangTersedia, setBarangTersedia] = useState([]);
+  const [loadingBarang, setLoadingBarang] = useState(false);
+  const [formPeminjaman, setFormPeminjaman] = useState({
+    barang_id: "",
+    jumlahPinjam: 1,
+    tanggalKembali: "",
+    catatan: ""
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [formSuccess, setFormSuccess] = useState("");
+
+  // Fetch barang tersedia
+  useEffect(() => {
+    const fetchBarang = async () => {
+      try {
+        setLoadingBarang(true);
+        const data = await getItems();
+        // Filter hanya barang yang tersedia
+        const available = data.filter(item => item.tersedia > 0);
+        setBarangTersedia(available);
+      } catch (err) {
+        console.error("Error fetching items:", err);
+      } finally {
+        setLoadingBarang(false);
+      }
+    };
+
+    fetchBarang();
+  }, []);
+
+  // Handle perubahan form
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormPeminjaman(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Handle submit form
+  const handlePeminjamanSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+      setSubmitting(true);
+      setFormError("");
+      setFormSuccess("");
+      
+      // Validasi form
+      if (!formPeminjaman.barang_id) {
+        setFormError("Pilih barang yang akan dipinjam");
+        return;
+      }
+      
+      if (!formPeminjaman.tanggalKembali) {
+        setFormError("Tanggal kembali harus diisi");
+        return;
+      }
+      
+      // Format data untuk API
+      const borrowData = {
+        barang_id: parseInt(formPeminjaman.barang_id),
+        jumlahPinjam: parseInt(formPeminjaman.jumlahPinjam),
+        tanggalKembali: new Date(formPeminjaman.tanggalKembali).toISOString(),
+        catatan: formPeminjaman.catatan
+      };
+      
+      // Kirim ke API
+      await createBorrow(borrowData);
+      
+      // Reset form
+      setFormPeminjaman({
+        barang_id: "",
+        jumlahPinjam: 1,
+        tanggalKembali: "",
+        catatan: ""
+      });
+      
+      setFormSuccess("Permintaan peminjaman berhasil dikirim");
+      
+      // Refresh data barang tersedia
+      const data = await getItems();
+      const available = data.filter(item => item.tersedia > 0);
+      setBarangTersedia(available);
+      
+    } catch (err) {
+      console.error("Error creating borrow:", err);
+      setFormError("Gagal membuat peminjaman: " + (err.message || "Terjadi kesalahan"));
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="h-full">
       <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
@@ -155,57 +253,102 @@ const Dashboard = () => {
       {/* Form Permintaan Peminjaman */}
       <div>
         <h2 className="text-lg font-semibold mb-4">Permintaan Peminjaman</h2>
-        <div>
-          <h3 className="text-md font-medium mb-4">Tambah Barang Baru</h3>
-          <form>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Nama Barang
-                </label>
-                <input
-                  type="text"
-                  name="itemName"
-                  className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
-                  placeholder="Nama Barang"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Jumlah Barang
-                </label>
-                <input
-                  type="number"
-                  name="quantity"
-                  className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
-                  placeholder="0"
-                />
-              </div>
-            </div>
-            <div className="mb-4">
+        
+        {formSuccess && (
+          <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg">
+            {formSuccess}
+          </div>
+        )}
+        
+        {formError && (
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg">
+            {formError}
+          </div>
+        )}
+        
+        <form onSubmit={handlePeminjamanSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Kategori
+                Nama Barang
+              </label>
+              <select
+                name="barang_id"
+                value={formPeminjaman.barang_id}
+                onChange={handleFormChange}
+                className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
+                disabled={loadingBarang || submitting}
+              >
+                <option value="">-- Pilih Barang --</option>
+                {barangTersedia.map(item => (
+                  <option key={item.id} value={item.id}>
+                    {item.namaBarang} - Tersedia: {item.tersedia}
+                  </option>
+                ))}
+              </select>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Jumlah Barang
               </label>
               <input
-                type="text"
-                name="category"
+                type="number"
+                name="jumlahPinjam"
+                min="1"
+                max={formPeminjaman.barang_id ? 
+                  barangTersedia.find(i => i.id === parseInt(formPeminjaman.barang_id))?.tersedia || 1 
+                  : 1}
+                value={formPeminjaman.jumlahPinjam}
+                onChange={handleFormChange}
                 className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
-                placeholder="Kategori"
+                disabled={submitting}
               />
             </div>
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                className="inline-flex justify-center py-2 px-6 rounded-md text-sm font-medium shadow-md"
-                style={{ backgroundColor: '#1d4ed8', color: 'white' }}
-              >
-                Ajukan
-              </button>
-            </div>
-          </form>
-        </div>
+          </div>
+          
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Tanggal Pengembalian
+            </label>
+            <input
+              type="date"
+              name="tanggalKembali"
+              value={formPeminjaman.tanggalKembali}
+              onChange={handleFormChange}
+              min={new Date().toISOString().split('T')[0]}
+              className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
+              disabled={submitting}
+            />
+          </div>
+          
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Catatan (Opsional)
+            </label>
+            <textarea
+              name="catatan"
+              value={formPeminjaman.catatan}
+              onChange={handleFormChange}
+              rows="3"
+              className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
+              disabled={submitting}
+            ></textarea>
+          </div>
+          
+          <div>
+            <button
+              type="submit"
+              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              disabled={submitting || loadingBarang}
+            >
+              {submitting ? "Memproses..." : "Ajukan Peminjaman"}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
-}
+};
+
 export default Dashboard;

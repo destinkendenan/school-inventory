@@ -1,15 +1,56 @@
-import React, { useState } from 'react';
-import logo from '../assets/logo.png'; // Pastikan path ini benar
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 function Login() {
   // State untuk form
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const { login, user, loading } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  // Redirect jika user sudah login
+  useEffect(() => {
+    if (user) {
+      console.log("User already logged in, redirecting");
+      if (user.role === 'admin') {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/user/dashboard');
+      }
+    }
+  }, [user, navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Login attempt:', { username, password });
+    if (isSubmitting) return;
+    
+    setError('');
+    setIsSubmitting(true);
+    
+    try {
+      console.log("Attempting login with:", username);
+      const success = await login(username, password);
+      
+      if (!success) {
+        setError('Login gagal. Periksa username dan password Anda.');
+      }
+      // Jangan redirect di sini, biarkan useEffect di atas yang menangani
+    } catch (err) {
+      console.error("Login error:", err);
+      setError('Terjadi kesalahan saat login. Silahkan coba lagi.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  if (loading) {
+    return <div className="loading">Loading...</div>;
+  }
 
   return (
     // <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
@@ -19,6 +60,7 @@ function Login() {
           <div className="md:w-1/2 p-12 flex flex-col justify-center">
             <h2 className="text-3xl font-bold text-center mb-10">Welcome Back!</h2>
             
+            {error && <div className="alert alert-danger">{error}</div>}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <input
@@ -27,6 +69,7 @@ function Login() {
                   onChange={(e) => setUsername(e.target.value)}
                   className="w-full px-4 py-3 border border-red-100 rounded-full text-gray-700 focus:outline-none"
                   placeholder="Username"
+                  required
                 />
               </div>
               
@@ -37,6 +80,7 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-4 py-3 border border-red-100 rounded-full text-gray-700 focus:outline-none"
                   placeholder="Password"
+                  required
                 />
               </div>
               
@@ -45,8 +89,9 @@ function Login() {
                   type="submit"
                     className="w-full font-medium py-3 px-4 rounded-full text-white transition duration-300"
                     style={{ backgroundColor: '#1d4ed8', color: 'white' }}
+                    disabled={isSubmitting}
                     >
-                    Login
+                    {isSubmitting ? 'Memproses...' : 'Login'}
                 </button>
               </div>
             </form>
@@ -63,16 +108,16 @@ function Login() {
           </div>
           
          {/* Right Side - Logo and Title */}
-<div className="md:w-1/2 bg-white p-12 flex flex-col items-center justify-center">
-  {/* Logo dengan ukuran yang lebih besar */}
-  <div className="w-64 h-64 mb-6"> {/* Diubah dari w-48 h-48 */}
-    <img 
-      src={logo} 
-      alt="School Inventory" 
-      className="w-full h-full object-contain"
-    />
-  </div>
-</div>
+          <div className="md:w-1/2 bg-white p-12 flex flex-col items-center justify-center">
+            {/* Logo dengan ukuran yang lebih besar */}
+            <div className="w-64 h-64 mb-6"> {/* Diubah dari w-48 h-48 */}
+              <img 
+                src={logo} 
+                alt="School Inventory" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
         </div>
       </div>
     // </div>
