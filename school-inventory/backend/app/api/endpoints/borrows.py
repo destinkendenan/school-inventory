@@ -56,7 +56,8 @@ def get_borrows(
             "barang": {
                 "id": borrow.barang.id,
                 "kodeBarang": borrow.barang.kodeBarang,
-                "namaBarang": borrow.barang.namaBarang
+                "namaBarang": borrow.barang.namaBarang,
+                "kategori": borrow.barang.kategori.nama if borrow.barang.kategori else None
             }
         }
         result.append(borrow_dict)

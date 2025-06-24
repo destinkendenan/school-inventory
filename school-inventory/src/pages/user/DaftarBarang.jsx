@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getItems } from "../../services/apiService";
+import "./DaftarBarang.css"; // Assuming you have some styles for this component
 
 const DaftarBarang = () => {
   const [barang, setBarang] = useState([]);
@@ -24,82 +25,48 @@ const DaftarBarang = () => {
     fetchBarang();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="h-full">
-        <h1 className="text-2xl font-bold mb-6">Daftar Barang</h1>
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <p>Memuat data barang...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="h-full">
-        <h1 className="text-2xl font-bold mb-6">Daftar Barang</h1>
-        <div className="bg-white rounded-lg shadow-md p-6 text-red-500">
-          <p>{error}</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="h-full">
-      <h1 className="text-2xl font-bold mb-6">Daftar Barang</h1>
-      
-      <div className="bg-white rounded-lg shadow-md mb-6">
-        <div className="p-4 border-b border-gray-200">
-          <h2 className="text-lg font-semibold">Daftar Barang Tersedia</h2>
-        </div>
-        
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  No
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Nama Barang
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Kategori
-                </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Tersedia
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {barang.filter(item => item.tersedia > 0).map((item, index) => (
-                <tr key={item.id}>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{index + 1}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">{item.namaBarang}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{item.kategori}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{item.tersedia}</div>
-                  </td>
-                </tr>
-              ))}
-              
-              {barang.filter(item => item.tersedia > 0).length === 0 && (
-                <tr>
-                  <td colSpan="4" className="px-6 py-4 text-center text-sm text-gray-500">
-                    Tidak ada barang tersedia saat ini
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+    <div className="daftar-barang-container">
+      <div className="daftar-barang-card">
+        <h1 className="daftar-barang-title">Daftar Barang</h1>
+
+        <div className="bg-white rounded-xl shadow p-6">
+          <h2 className="text-lg font-semibold mb-4 text-gray-700">Barang Tersedia</h2>
+          {loading ? (
+            <div className="py-8 text-center text-gray-500">Memuat data barang...</div>
+          ) : error ? (
+            <div className="py-8 text-center text-red-500">{error}</div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="daftar-barang-table min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">No</th>
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nama Barang</th>
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Kategori</th>
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Tersedia</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-100">
+                  {barang.filter(item => item.tersedia > 0).map((item, index) => (
+                    <tr key={item.id}>
+                      <td className="px-4 py-3">{index + 1}</td>
+                      <td className="px-4 py-3">{item.namaBarang}</td>
+                      <td className="px-4 py-3">{item.kategori}</td>
+                      <td className="px-4 py-3">{item.tersedia}</td>
+                    </tr>
+                  ))}
+                  {barang.filter(item => item.tersedia > 0).length === 0 && (
+                    <tr>
+                      <td colSpan="4" className="px-4 py-6 text-center text-sm text-gray-500">
+                        Tidak ada barang tersedia saat ini
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
     </div>

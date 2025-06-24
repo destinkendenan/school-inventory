@@ -27,11 +27,6 @@ const SidebarUser = () => {
             path: '/user/peminjaman-saya',
             name: 'Peminjaman Saya',
             icon: <GiTakeMyMoney size={20} />
-        },
-        {
-            path: '/user/pengembalian',
-            name: 'Pengembalian',
-            icon: <GiPayMoney size={20} />
         }
     ];
 
@@ -42,7 +37,7 @@ const SidebarUser = () => {
     return (
         <div className="SidebarUser-sidebar">
             <div className="SidebarUser-header">
-                <h1>Inventory</h1>
+                <h1>Inventaris Sekolah</h1>
                 <div className="SidebarUser-divider"></div>
                 <p className="SidebarUser-menuLabel">MENU</p>
             </div>

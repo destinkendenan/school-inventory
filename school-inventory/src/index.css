@@ -25,12 +25,19 @@ a:hover {
   color: #535bf2;
 }
 
-body {
+/* body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+} */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -1294,15 +1301,6 @@ body {
   font-weight: 600;
 }
 
-/* Layout untuk konten utama */
-.main-content {
-  margin-left: 250px; /* Sesuai dengan lebar sidebar */
-  padding: 20px;
-  box-sizing: border-box;
-  min-height: 100vh;
-  background-color: #f6f8fb;
-}
-
 /* Styling untuk container halaman admin */
 .data-barang-admin-container-full,
 .kategori-admin-container-full,
@@ -1439,18 +1437,6 @@ body {
   min-width: auto; /* Hapus min-width yang mungkin berlebihan */
 }
 
-/* Pastikan main-content memiliki styling yang tepat */
-.main-content {
-  margin-left: 250px;
-  width: calc(100% - 250px) !important;
-  max-width: calc(100% - 250px);
-  padding: 20px;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  background-color: #f6f8fb;
-  min-height: 100vh;
-}
-
 
 /* CSS for Pengguna page */
 .pengguna-admin-wrapper {
@@ -1572,18 +1558,6 @@ body {
   color: #888;
   border: 1.5px solid #b3d8ff;
   cursor: not-allowed;
-}
-
-/* Layout fixes for main content */
-.main-content {
-  margin-left: 250px;
-  width: calc(100% - 250px) !important;
-  max-width: calc(100% - 250px);
-  padding: 20px;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  background-color: #f6f8fb;
-  min-height: 100vh;
 }
 
 /* Perbaikan Card Layout Dashboard */
@@ -1907,18 +1881,6 @@ body {
   background-color: #1565c0;
 }
 
-/* Mengubah main-content untuk semua halaman admin */
-.main-content {
-  margin-left: 250px;
-  width: calc(100% - 250px) !important;
-  max-width: calc(100% - 250px);
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  background-color: #f6f8fb;
-  min-height: 100vh;
-}
 
 /* tampilan laporan admin */
 .laporan-admin-wrapper {

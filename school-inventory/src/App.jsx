@@ -21,7 +21,6 @@ import Laporan from './pages/admin/Laporan';
 import UserDashboard from './pages/user/Dashboard';
 import DaftarBarang from './pages/user/DaftarBarang';
 import PeminjamanSaya from './pages/user/PeminjamanSaya';
-import UserPengembalian from './pages/user/Pengembalian';
 
 function App() {
   return (
@@ -52,7 +51,6 @@ function App() {
               <Route path="/user/dashboard" element={<UserDashboard />} />
               <Route path="/user/daftar-barang" element={<DaftarBarang />} />
               <Route path="/user/peminjaman-saya" element={<PeminjamanSaya />} />
-              <Route path="/user/pengembalian" element={<UserPengembalian />} />
               <Route path="/user" element={<Navigate to="/user/dashboard" />} />
             </Route>
           </Route>
