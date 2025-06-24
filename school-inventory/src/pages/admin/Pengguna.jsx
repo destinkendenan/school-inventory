@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getUsers } from "../../services/apiService";
+import "./Pengguna.css"; // Assuming you have some styles for this component
 
 const Pengguna = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
 
   // Fetch users data from API
   useEffect(() => {
@@ -49,11 +48,6 @@ const Pengguna = () => {
     fetchUsers();
   }, []);
 
-  // Pagination calculation
-  const indexOfLast = currentPage * itemsPerPage;
-  const indexOfFirst = indexOfLast - itemsPerPage;
-  const currentUsers = users.slice(indexOfFirst, indexOfLast);
-  const totalPages = Math.ceil(users.length / itemsPerPage);
 
   return (
     <div className="pengguna-admin-wrapper">
@@ -62,13 +56,6 @@ const Pengguna = () => {
           <h2 className="pengguna-admin-title pengguna-admin-title-blue">
             Data Pengguna
           </h2>
-          <div className="dashboard-admin-avatar">
-            <img
-              src="https://randomuser.me/api/portraits/women/44.jpg"
-              alt="avatar"
-              className="dashboard-admin-avatar-img"
-            />
-          </div>
         </div>
         <div className="pengguna-admin-card">
           <div className="pengguna-admin-card-header">
@@ -106,9 +93,9 @@ const Pengguna = () => {
                     </td>
                   </tr>
                 ) : (
-                  currentUsers.map((user, idx) => (
+                  users.map((user, idx) => (
                     <tr key={user.id || idx}>
-                      <td className="text-center">{indexOfFirst + idx + 1}</td>
+                      <td className="text-center">{idx + 1}</td>
                       <td>{user.username || user.name || "N/A"}</td>
                       <td>{user.email || "N/A"}</td>
                     </tr>
@@ -116,37 +103,6 @@ const Pengguna = () => {
                 )}
               </tbody>
             </table>
-            
-            {/* Pagination */}
-            {!loading && !error && users.length > 0 && (
-              <div className="pengguna-admin-pagination">
-                <button
-                  onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                  disabled={currentPage === 1}
-                  className="pengguna-admin-pagination-btn"
-                >
-                  {"<"}
-                </button>
-                {[...Array(totalPages)].map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentPage(i + 1)}
-                    className={`pengguna-admin-pagination-btn${
-                      currentPage === i + 1 ? " active" : ""
-                    }`}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
-                <button
-                  onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-                  disabled={currentPage === totalPages}
-                  className="pengguna-admin-pagination-btn"
-                >
-                  {">"}
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>

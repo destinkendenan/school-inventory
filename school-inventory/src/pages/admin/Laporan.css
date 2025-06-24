@@ -1,0 +1,450 @@
+.laporan-admin-wrapper {
+  background: #f6f8fb;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.laporan-admin-container-full {
+  background: #fff;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem 0;
+}
+
+.laporan-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 12px;
+}
+
+.laporan-admin-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.laporan-admin-title-blue {
+  color: #1a237e;
+}
+
+.laporan-admin-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(26, 35, 126, 0.08);
+  padding: 28px 18px 22px 18px;
+  margin: 8px 12px;
+  width: calc(100% - 24px);
+  transition: box-shadow 0.2s;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.laporan-admin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.laporan-admin-card-title {
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: #1a237e;
+}
+
+.laporan-admin-filter {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 0;
+  margin-left: auto;
+}
+
+.laporan-admin-filter-label {
+  font-weight: 600;
+  color: #1a237e;
+  font-size: 1rem;
+  margin-right: 8px;
+}
+
+.laporan-admin-filter-select {
+  padding: 8px 12px;
+  border: 1.5px solid #1976d2;
+  border-radius: 7px;
+  background: #fff;
+  color: #1a237e;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+  min-width: 120px;
+}
+
+.laporan-admin-filter-select:focus {
+  outline: none;
+  border: 1.5px solid #1251a3;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.laporan-admin-filter-select:hover {
+  border: 1.5px solid #1251a3;
+}
+
+.laporan-admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.laporan-admin-table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(26, 35, 126, 0.04);
+}
+
+.laporan-admin-table th {
+  padding: 12px 8px;
+  border: 1px solid #e0e0e0;
+  font-weight: 700;
+  font-size: 1rem;
+  background: #1a237e;
+  color: #fff;
+  text-align: center;
+}
+
+.laporan-admin-table td {
+  padding: 10px 8px;
+  border: 1px solid #e0e0e0;
+  background: #e3edfa;
+  transition: background 0.2s;
+  color: #446ed0;
+  font-weight: 600;
+}
+
+.laporan-admin-table td.text-center {
+  text-align: center;
+}
+
+.laporan-admin-table tbody tr:hover td {
+  background: #c7daf7;
+}
+
+.laporan-admin-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 12px;
+}
+
+.laporan-admin-btn-cetak {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(25, 118, 210, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.2px;
+}
+
+.laporan-admin-btn-cetak:hover {
+  background: #1251a3;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.13);
+}
+
+/* ========== CSS UNTUK LAPORAN ========== */
+
+/* Styling untuk layar */
+.screen-only {
+  display: block;
+}
+
+.print-only {
+  display: none;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-menunggu {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-disetujui {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-ditolak {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-dikembalikan {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+/* Tombol cetak */
+.laporan-admin-btn-cetak {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.laporan-admin-btn-cetak:hover {
+  background-color: #45a049;
+}
+
+.laporan-admin-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Styling khusus untuk cetak */
+@media print {
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    background: white;
+    color: black;
+  }
+
+  .screen-only {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .laporan-admin-wrapper,
+  .laporan-admin-container-full,
+  .laporan-admin-card {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+
+  .print-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+  }
+
+  .print-header-logo {
+    width: 80px;
+    margin-right: 20px;
+  }
+
+  .print-logo {
+    width: 100%;
+    height: auto;
+  }
+
+  .print-header-text {
+    text-align: center;
+    flex: 1;
+  }
+
+  .print-title {
+    font-size: 18pt;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+  }
+
+  .print-subtitle {
+    font-size: 16pt;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+  }
+
+  .print-address {
+    font-size: 10pt;
+    margin: 0 0 5px 0;
+  }
+
+  .print-date {
+    font-size: 10pt;
+    margin: 10px 0 0 0;
+  }
+
+  .print-filter-info {
+    margin: 10px 0;
+    font-size: 10pt;
+  }
+
+  .laporan-admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+    margin: 10px 0 20px 0;
+  }
+
+  .laporan-admin-table th,
+  .laporan-admin-table td {
+    border: 1px solid #000;
+    padding: 6px;
+    text-align: left;
+  }
+
+  .laporan-admin-table th {
+    background-color: #f2f2f2 !important;
+    font-weight: bold;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .status-badge {
+    padding: 1px 3px;
+    border-radius: 2px;
+    font-size: 9pt;
+    font-weight: normal;
+  }
+
+  .print-footer {
+    margin-top: 40px;
+  }
+
+  .print-signature {
+    float: right;
+    text-align: center;
+    width: 200px;
+  }
+
+  .print-city {
+    margin-bottom: 5px;
+  }
+
+  .print-role {
+    margin-bottom: 60px;
+  }
+
+  .print-name {
+    margin: 0;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+  }
+
+  .print-nip {
+    margin-top: 5px;
+    font-size: 9pt;
+  }
+
+  .laporan-admin-no-data {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #000;
+  }
+
+  .laporan-admin-no-data-icon {
+    display: none;
+  }
+
+  body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    background: white !important;
+  }
+
+  .main-content {
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .laporan-admin-wrapper,
+  .laporan-admin-container-full {
+    margin: 0 auto !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    float: none !important;
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  .print-container {
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  .print-header {
+    width: 100% !important;
+    margin: 0 auto 20px auto !important;
+  }
+
+  .laporan-admin-table-wrapper {
+    width: 100% !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+  }
+
+  .laporan-admin-table {
+    width: 100% !important;
+    min-width: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .print-footer {
+    width: 100% !important;
+    margin-top: 40px !important;
+    position: relative !important;
+  }
+
+  .print-signature {
+    position: absolute !important;
+    right: 0 !important;
+    text-align: center !important;
+    width: 200px !important;
+  }
+}

@@ -1,0 +1,221 @@
+.dashboard-admin-main-bg {
+  min-height: 100vh;
+  width: 100%;
+  background: #f6f8fb;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dashboard-admin-container {
+  width: 100%;
+  flex: 1;
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dashboard-admin-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dashboard-admin-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a237e;
+}
+
+.dashboard-admin-subtitle {
+  color: #666;
+  font-size: 1rem;
+}
+
+.dashboard-admin-cards-wrapper {
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.dashboard-admin-cards-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+}
+
+.dashboard-admin-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 220px;
+}
+
+.dashboard-admin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard-admin-card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.dashboard-admin-card-content {
+  flex: 1;
+}
+
+.dashboard-admin-card-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.dashboard-admin-card-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a237e;
+}
+
+.dashboard-admin-sections {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.dashboard-admin-section {
+  background: white;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  min-width: 220px;
+}
+
+.dashboard-section-header {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 0.95rem;
+  background: #fff;
+  border-radius: 8px 8px 0 0;
+  padding: 8px 12px 6px 12px;
+  margin-bottom: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.dashboard-section-icon {
+  margin-right: 6px;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.dashboard-section-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 12px 6px 12px;
+}
+
+.dashboard-section-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.dashboard-section-list li:last-child {
+  border-bottom: none;
+}
+
+.dashboard-section-item-name {
+  color: #222;
+  font-size: 0.95rem;
+}
+
+.dashboard-section-item-time {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.dashboard-admin-loading,
+.dashboard-admin-error {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.dashboard-admin-loading p {
+  color: #1a237e;
+  font-weight: 600;
+}
+
+.dashboard-admin-error p {
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-admin-card {
+    max-width: calc(50% - 10px);
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-admin-card {
+    max-width: 100%;
+  }
+  .dashboard-admin-cards-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    scrollbar-width: thin;
+  }
+  .dashboard-admin-cards-row::-webkit-scrollbar {
+    height: 6px;
+  }
+  .dashboard-admin-cards-row::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  .dashboard-admin-cards-row::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+  }
+  .dashboard-admin-cards-row::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+}

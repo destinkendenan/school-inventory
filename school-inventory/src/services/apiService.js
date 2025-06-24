@@ -148,3 +148,23 @@ export const returnBorrowedItem = async (id, returnData) => {
   // Hanya gunakan PATCH
   return updateBorrow(id, returnData);
 };
+
+// Contoh fungsi registerUser
+export async function registerUser(data) {
+  const response = await fetch('http://127.0.0.1:8000/api/auth/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  const responseText = await response.text();
+  if (!response.ok) {
+    let errorMsg = 'Gagal mendaftar. Username/email mungkin sudah digunakan.';
+    try {
+      const errJson = JSON.parse(responseText);
+      if (errJson.detail) errorMsg = errJson.detail;
+      if (errJson.message) errorMsg = errJson.message;
+    } catch {}
+    throw new Error(errorMsg);
+  }
+  return JSON.parse(responseText);
+}

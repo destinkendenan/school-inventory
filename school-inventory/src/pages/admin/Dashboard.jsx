@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../index.css";
+import "./Dashboard.css"; // Import CSS styles
 import {
   getItems,
   getBorrows,
@@ -184,13 +185,6 @@ const DashboardAdmin = () => {
           <div className="dashboard-admin-header-content">
             <h1 className="dashboard-admin-title">Dashboard</h1>
             <p className="dashboard-admin-subtitle">Welcome back, Admin!</p>
-          </div>
-          <div className="dashboard-admin-avatar">
-            <img
-              src="https://randomuser.me/api/portraits/women/44.jpg"
-              alt="avatar"
-              className="dashboard-admin-avatar-img"
-            />
           </div>
         </header>
 

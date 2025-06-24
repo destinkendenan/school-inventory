@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../index.css";
+import "./Kategori.css";
 import { getCategories, createCategory, deleteCategory, updateCategory } from "../../services/apiService";
 import EditKategori from '../../components/overlay/EditKategori';
 import TambahKategori from '../../components/overlay/TambahKategori'; // Import komponen TambahKategori
@@ -141,13 +142,6 @@ const Kategori = () => {
           <h2 className="kategori-admin-title kategori-admin-title-blue">
             Kategori
           </h2>
-          <div className="dashboard-admin-avatar">
-            <img
-              src="https://randomuser.me/api/portraits/women/44.jpg"
-              alt="avatar"
-              className="dashboard-admin-avatar-img"
-            />
-          </div>
         </div>
         <div className="kategori-admin-card">
           <div className="kategori-admin-card-header">

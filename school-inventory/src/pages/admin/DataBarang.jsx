@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react";
-import "../../index.css";
+// import "../../index.css";
+import "./DataBarang.css";
 import { getItems, createItem, updateItem, deleteItem } from "../../services/apiService";
 import TambahBarang from "../../components/overlay/TambahBarang";
 import AksiBarang from "../../components/overlay/AksiBarang";
 
 const DataBarang = () => {
   const [dataBarang, setDataBarang] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isTambahOpen, setIsTambahOpen] = useState(false);
   const [isAksiOpen, setIsAksiOpen] = useState(false);
   const [selectedBarang, setSelectedBarang] = useState(null);
   const [aksiType, setAksiType] = useState('');
-
-  const itemsPerPage = 10;
 
   // Fetch data barang
   useEffect(() => {
@@ -48,13 +46,7 @@ const DataBarang = () => {
     fetchData();
   }, []);
 
-  // Hitung data yang akan ditampilkan
-  const indexOfLast = currentPage * itemsPerPage;
-  const indexOfFirst = indexOfLast - itemsPerPage;
-  const currentData = dataBarang.slice(indexOfFirst, indexOfLast);
-
-  // Hitung jumlah halaman
-  const totalPages = Math.ceil(dataBarang.length / itemsPerPage);
+  const currentData = dataBarang;
 
   // Handler untuk tambah barang
   const handleTambahBarang = async (data) => {
@@ -171,13 +163,6 @@ const DataBarang = () => {
           <h2 className="data-barang-admin-title data-barang-admin-title-blue">
             Data Barang
           </h2>
-          <div className="dashboard-admin-avatar">
-            <img
-              src="https://randomuser.me/api/portraits/women/44.jpg"
-              alt="avatar"
-              className="dashboard-admin-avatar-img"
-            />
-          </div>
         </div>
         <div className="data-barang-admin-card">
           <div className="data-barang-admin-card-header">
@@ -207,7 +192,7 @@ const DataBarang = () => {
               <tbody>
                 {currentData.map((barang, idx) => (
                   <tr key={barang.id || idx}>
-                    <td className="text-center">{indexOfFirst + idx + 1}</td>
+                    <td className="text-center">{idx + 1}</td>
                     <td>{barang.nama}</td>
                     <td>{barang.kategori}</td>
                     <td className="text-center">{barang.jumlah}</td>
@@ -251,34 +236,6 @@ const DataBarang = () => {
                 ))}
               </tbody>
             </table>
-            {/* Pagination */}
-            <div className="data-barang-admin-pagination">
-              <button
-                onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                disabled={currentPage === 1}
-                className="data-barang-admin-pagination-btn"
-              >
-                {"<"}
-              </button>
-              {[...Array(totalPages)].map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentPage(i + 1)}
-                  className={`data-barang-admin-pagination-btn${
-                    currentPage === i + 1 ? " active" : ""
-                  }`}
-                >
-                  {i + 1}
-                </button>
-              ))}
-              <button
-                onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-                disabled={currentPage === totalPages}
-                className="data-barang-admin-pagination-btn"
-              >
-                {">"}
-              </button>
-            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../index.css";
+import "./Peminjaman.css";
 import { getBorrows, updateBorrow, getUsers, returnBorrowedItem } from "../../services/apiService";
 import { API_ENDPOINTS } from "../../config/api";
 import ReturnConfirm from '../../components/overlay/ReturnConfirm';
@@ -333,13 +334,6 @@ const Peminjaman = () => {
           <h2 className="peminjaman-admin-title peminjaman-admin-title-blue">
             Peminjaman
           </h2>
-          <div className="dashboard-admin-avatar">
-            <img
-              src="https://randomuser.me/api/portraits/women/44.jpg"
-              alt="avatar"
-              className="dashboard-admin-avatar-img"
-            />
-          </div>
         </div>
 
         <div className="peminjaman-admin-card">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../index.css";
+import "./Laporan.css";
 import { getBorrows } from "../../services/apiService";
 
 const Laporan = () => {
@@ -133,13 +134,6 @@ const Laporan = () => {
           <h2 className="laporan-admin-title laporan-admin-title-blue">
             Laporan
           </h2>
-          <div className="dashboard-admin-avatar">
-            <img
-              src="https://randomuser.me/api/portraits/women/44.jpg"
-              alt="avatar"
-              className="dashboard-admin-avatar-img"
-            />
-          </div>
         </div>
 
         {/* Header khusus untuk cetakan */}
