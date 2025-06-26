@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUsers } from "../../services/apiService";
+import "../../index.css";
 import "./Pengguna.css"; // Assuming you have some styles for this component
 
 const Pengguna = () => {

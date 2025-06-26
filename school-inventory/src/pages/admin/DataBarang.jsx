@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import "../../index.css";
+import "../../index.css";
 import "./DataBarang.css";
 import { getItems, createItem, updateItem, deleteItem } from "../../services/apiService";
 import TambahBarang from "../../components/overlay/TambahBarang";

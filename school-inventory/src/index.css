@@ -259,3 +259,84 @@ body {
 .login-register-link:hover {
   color: #1e40af;
 }
+
+/* RESPONSIVE */
+/* Responsive Table Wrapper */
+@media (max-width: 900px) {
+  .data-barang-admin-table,
+  .laporan-admin-table,
+  .peminjaman-admin-table,
+  .pengguna-admin-table,
+  .dashboard-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .dashboard-admin-cards-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .dashboard-admin-card {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-card,
+  .dashboard-admin-card,
+  .dashboard-request-card,
+  .data-barang-admin-card,
+  .laporan-admin-card,
+  .peminjaman-admin-card,
+  .pengguna-admin-card {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px !important;
+    margin: 0 !important;
+  }
+  .login-left,
+  .login-right {
+    padding: 24px 8px !important;
+  }
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px !important;
+  }
+  .sidebar-admin,
+  .SidebarUser {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 220px;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: 1001;
+  }
+  .sidebar-admin.active,
+  .SidebarUser.active {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .login-input,
+  .login-btn,
+  .dashboard-request-form input,
+  .dashboard-request-form button {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+}
+
+img,
+.login-logo,
+.print-logo {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
